@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Limited Words Example</title>
+    <style>
+        .truncate-text {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 200px; /* Điều chỉnh kích thước tối đa của vùng hiển thị */
+        }
+
+        .read-more {
+            display: none;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+    <script>
+        function showFullText() {
+            document.getElementById('full-text').style.display = 'inline';
+            document.getElementById('read-more').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <span style="content:\00A9;"></span>
+</body>
+</html>

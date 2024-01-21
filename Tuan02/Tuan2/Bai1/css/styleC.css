@@ -1,0 +1,172 @@
+* {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wrapper {
+    height: 750px;
+    width: 1080px;
+    margin: auto;
+    padding: auto;
+    border: 2px black solid;
+}
+
+.header {
+    width: 1080px;
+    height: 100px;
+}
+
+.container {
+    display: flex;
+}
+
+.field {
+    margin-top: 10px;
+    height: 30px;
+    width: 250px;
+    margin-left: 5px;
+}
+
+.radio {
+
+}
+
+.container select{
+    margin-top: 10px;
+    height: 30px;
+    width: 257px;
+    margin-left: 5px;
+}
+
+.west {
+    height: px;
+    width: 270px;
+    margin-right: 10px;
+}
+
+.west a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    background-color: #e49494;
+    margin-top: 5px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.center {
+    height: 600px;
+    width: 540px;
+}
+
+.east {
+    height: 600px;
+    width: 270px;
+    margin-left: 10px;
+    background-color: black;
+}
+
+.east p {
+    color: white;
+}
+
+.east a {
+    color: #e49494;
+}
+
+.title {
+    padding-left: 10px;
+    margin-top: 5px;
+    color: darkred;
+    font-weight: bold;
+    background-color: #e49494;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.v {
+    color: red;
+    font-style: unset;
+    font-weight: bold;
+}
+
+.back {
+    color: red;
+    font-style: unset;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    background-color: #e49494;
+    width: 100%;
+    height: 50px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu li {
+    color: white;
+    font-weight: bold;
+    display: inline;
+    line-height: 50px;
+    margin-left: 10px;
+    border-right: 2px blueviolet solid;
+    padding: 10px;
+}
+
+.menu li:nth-child(1){
+    color: white;
+    font-weight: bold;
+    display: inline;
+    line-height: 50px;
+    margin-left: 10px;
+    border-left: 2px blueviolet solid;
+    padding: 10px;
+}
+
+.menu img {
+    margin-right: -40px;
+    margin-left: 100px;
+    height: 30px;
+    width: 30px;
+}
+
+.menu input {
+    border-left: 2px blueviolet inset;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.btn-go {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: 5px;
+}
+
+.ellipse {
+  width: 200px;
+  height: 130px;
+  border-radius: 50%;
+  box-shadow: 10px 15px 25px #e49494;
+  margin-top: 15px;
+}
+
+.footer {
+    height: 50px;
+    width: 1080px;
+    background-color: #e49494;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.footer a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-style: italic;
+}

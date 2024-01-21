@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/styleC.css">
+    <script>
+        function showFullText{
+            document.getElementById("full-text").style.display='inline';
+            document.getElementById('read-more').style.display='none';
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+            <div class="header">
+                <h1 style="color: darkred; text-align: center; text-shadow: 9px 7px 9px rgba(128, 0, 0, 1);">EXAMPLE CAFE MENU</h1>
+                <div class="menu">
+                    <img src="../img/home.png" alt="#">
+                    <ul>
+                        <li><a href="#">STARTER</a></li>
+                        <li><a href="#">MAIN COURSES</a></li>
+                        <li><a href="#">DESSERTS</a></li>
+                    </ul>
+                    <input type="text" id="search" size="15px">
+                    <button class="btn-go">Go</button>
+                </div>
+            </div>
+            <div class="container">
+                <div class="west">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <img class="ellipse" src="../img/company.png" alt="#">
+                </div>
+                <div class="center">
+                    <h2 class="title">S t a r t e r</h2>
+                    <ul>
+                        <li>Chesnut and Mushroom Goujons<a class="v" href="#">(v)</a></li>
+                        <li>Goat Cheese<a class="v" href="#">(v)</a></li>
+                        <li><span style="font-weight: bold; color: goldenrod;">HONEY SOY CHICKEN KEBABS</span><a class="v" href="#">(V)</a></li>
+                        <li>Seafood Salad<a class="v" href="#">(v)</a></li>
+                    </ul>
+                    <a href="#" class="back">Back to Top</a>
+                    <h2 class="title">D e s s e r t s</h2>
+                    <ul>
+                        <li>Lemon Sorber<a class="v" href="#">(v)</a></li>
+                        <li>Chocolate Mud Pie<a class="v" href="#">(v)</a></li>
+                        <li>Pecan Pie<a class="v" href="#">(v)</a></li>
+                        <li>Selection of fine cheeses from Around the World<a class="v" href="#">(v)</a></li>
+                    </ul>
+                    <a href="#" class="back">Back to Top</a>
+                    <h2 class="title">I N F O R M A T I O N</h2>
+                    <input class="field" type="text" placeholder="First Name">
+                    <input class="field" type="text" placeholder="Last Name">
+                    <input class="field" type="text" placeholder="Email">
+                    <input class="field" type="text" placeholder="Phone">
+                    <select name="" id="">
+                        <option value="us">USA</option>
+                        <option value="vi">Vietnam</option>
+                    </select>
+                    <label for="a">
+                        <input class="radio" type="radio" name="a" id="a">Vietnamese
+                    </label>
+                   <label for="b">
+                        <input class="radio" type="radio" name="a" id="b">Engineer
+                   </label>
+                   <label for="" style="margin-left: 10px; margin-right: 10px; margin-top: 5px;">
+                    <textarea name="mess" id="mess" cols="68" rows="3"></textarea>
+                   </label>
+                   <button style="margin-left: 5px;">Submit</button>
+                   <button>Cancel</button>
+                </div>
+                <div class="east">
+                    <h1 style="color: white;">Events</h1>
+                    <br>
+                    <div style="padding-left: 20px; padding-right: 20px;">
+                        <h2 style="color: white;">Regular Meetings</h2>
+                        <img src="../img/meeting.png" alt="#" style="height: 150px; width: 230px;">
+                        <p>Host your regular team meetings or activities in the comfort of your own private room <a href="#">Read more..</a></p>
+                        <br>
+                        <h2 style="color: white;">Product Launches</h2>
+                        <img src="../img/launch.png" alt="#" style="height: 150px; width: 230px;">
+                        <p>Launch your product with ease in a space that truly fits its image <a href="#">Read more..</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <a href="#">ABC Company<sup>&copy</sup> - 12345678 - abccoffe@gmail.com</a>
+            </div>
+    </div>  
+</body>
+
+</html>

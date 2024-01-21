@@ -1,0 +1,30 @@
+* {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        
+        .wrapper {
+            height: 720px;
+            width: 1080px;
+            margin: auto;
+            padding: auto;
+            border: 2px darkred solid;
+        }
+        
+        .title {
+            color: darkred;
+            font-weight: bold;
+            background-color: rgb(242, 246, 213);
+        }
+        
+        .v {
+            color: red;
+            font-style: unset;
+            font-weight: bold;
+        }
+        
+        .back {
+            color: red;
+            font-style: unset;
+            font-weight: bold;
+        }
