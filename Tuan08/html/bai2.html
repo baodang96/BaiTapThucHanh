@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        [class*=col-]{
+            margin: 0px auto;
+            padding: 0px;
+        }
+        .container{
+            height: auto;
+            width: 1080px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table class="table table-bordered text-center ">
+            <thead>
+                <tr>
+                    <th class="scope">STT</th>
+                    <th class="scope">Hình ảnh</th>
+                    <th class="scope">Giá</th>
+                    <th class="scope">Số lượng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><img src="../img/hoa1.png" alt="#"></td>
+                    <td><span id="gia1">20000</span></td>
+                    <td><input type="text" class="soluong" id="soluong1" onblur="return tinhGia()"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><img src="../img/hoa2.png" alt="#"></td>
+                    <td><span id="gia1">40000</span></td>
+                    <td><input type="text" class="soluong" id="soluong2" onblur="return tinhGia()"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><img src="../img/hoa3.png" alt="#"></td>
+                    <td><span id="gia1">30000</span></td>
+                    <td><input type="text" class="soluong" id="soluong3" onblur="return tinhGia()"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><img src="../img/hoa4.png" alt="#"></td>
+                    <td><span id="gia1">50000</span></td>
+                    <td><input type="text" class="soluong" id="soluong4" onblur="return tinhGia()"></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><img src="../img/hoa5.png" alt="#"></td>
+                    <td><span id="gia1">30000</span></td>
+                    <td><input type="text" class="soluong" id="soluong5" onblur="return tinhGia()"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><span>Tổng thành tiền</span></td>
+                    <td><span id="tong">...</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function tinhGia(){
+            var sl1 = (document.getElementById('soluong1').value.trim());
+            var sl2 = (document.getElementById('soluong2').value.trim());
+            var sl3 = (document.getElementById('soluong3').value.trim());
+            var sl4 = (document.getElementById('soluong4').value.trim());
+            var sl5 = (document.getElementById('soluong5').value.trim());
+            var gia1 = 20000;
+            var gia2 = 40000;
+            var gia3 = 30000;
+            var gia4 = 50000;
+            var gia5 = 30000;
+            if(isNaN(sl1) && sl1!=="" || isNaN(sl2) && sl2!=="" || isNaN(sl3) && sl3!=="" || isNaN(sl4) && sl4!=="" || isNaN(sl5) && sl5!==""){
+                alert("Số lượng phải là số");
+                return false;
+            } else {
+                if(sl1===""){
+                    sl1=0;
+                }
+                if(sl2===""){
+                    sl2=0;
+                }
+                if(sl3===""){
+                    sl3=0;
+                }
+                if(sl4===""){
+                    sl4=0;
+                }
+                if(sl5===""){
+                    sl5=0;
+                }
+                var t = gia1*parseInt(sl1)+gia2*parseInt(sl2)+gia3*parseInt(sl3)+gia4*parseInt(sl4)+gia5*parseInt(sl5);
+                tong.innerText = t;
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>

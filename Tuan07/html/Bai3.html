@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div class="">
+        <div class="container" style="background-color:rgb(160, 230, 160);">
+            <form action="">
+                <div class="text-center">Register Form</div>
+                <table class="table table-bordered border-success ">
+
+                    <tr>
+                        <td class=" text-end">Họ và tên <span>(*)</span> :</td>
+                        <td><input type="text" id="ip_hovaten">
+                            <p id="loi_hovaten" class="erro"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Tên đăng nhập <span>(*)</span> :</td>
+                        <td><input type="text" id="ip_tendangnhap">
+                            <p id="loi_tendangnhap" class="erro"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Mật khẩu <span>(*)</span> :</td>
+                        <td><input type="text" id="ip_mk">
+                            <p id="loi_mk" class="erro"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Xác nhận mật khẩu <span>(*)</span> :</td>
+                        <td><input type="password" id="ip_xacnhan">
+                            <p id="loi_xacnhan" class="erro">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Ngày sinh:</td>
+                        <td>
+                            <span>
+                                <input type="date" id="ns"> <input type="text" id="tuoi" placeholder="Tuoi" readonly>
+                                <select name="ngaysinh" id="ngaysinh">
+                                    <script>
+                                        for (let index = 1; index <= 31; index++) {
+                                          //  $("selector").html(htmlString);                                            
+                                          document.write("<option>"+index+"</option>");
+                                        }
+                                    </script>
+                                </select>
+                            </span>
+                            <label for="month">Tháng: </label>
+                            <span>
+                                <select name="thangsinh" id="thangsinh">
+                                    <script>
+                                        for (let index = 1; index <= 12; index++) {
+                                          //  $("selector").html(htmlString);                                            
+                                          document.write("<option>"+index+"</option>");
+                                        }
+                                    </script>
+                                </select>
+                            </span>
+                            <label for="year">Năm: </label>
+                            <span>
+                                <select name="namsinh" id="namsinh">
+                                    <script>
+                                        for (let index = 1900; index <= 2100; index++) {
+                                          //  $("selector").html(htmlString);                                            
+                                          document.write("<option>"+index+"</option>");
+                                        }
+                                    </script>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Điện thoại:</td>
+                        <td><input type="text" id="sdt">
+                            <p id="loi_sdt" class="erro"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Địa chỉ:</td>
+                        <td><input type="text" id="ip_diachi"></td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Email khác:</td>
+                        <td><input type="text" id="ip_email">
+                            <p id="loi_email" class="erro"></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-end">Sở thích:</td>
+                        <td>
+                            <select name="sothich" id="sothich">
+                               
+                                <option value="Ca nhạc">Ca nhạc</option>
+                                <option value="Du lịch">Du lịch</option>
+                                <option value="Thể thao">Thể thao</option>
+                                <option value="Đọc sách">Đọc sách</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" id="dk">Đăng ký</button>
+                            <button type="reset" id="huy">Hủy</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>DANH SACH THANH VIEN</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ho ten</th>
+                    <th>Ngay sinh</th>
+                    <th>Dien thoai</th>
+                    <th>Email</th>
+                    <th>Dia chi</th>
+                    <th>So thich</th>
+                </tr>
+            </thead>
+            <tbody id="tbl">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        $(document).ready(function() {
+
+            $("#ip_tendangnhap").blur(function(e) {
+                e.preventDefault();
+                let tendangnhap = $("#ip_tendangnhap").val();
+                let reg_tendangnhap = /^[a-zA-Z]+$/; // khac rong
+
+                if (tendangnhap == "") {
+                    $("#loi_tendangnhap").html("Tên đăng nhập không được để trống");
+                    $("#ip_tendangnhap").focus();
+                } else if (!reg_tendangnhap.test(tendangnhap)) {
+                    $("#loi_tendangnhap").html("Tên đăng nhập phải ít nhất 1 ký tự");
+                    $("#ip_tendangnhap").focus();
+                } else {
+                    $("#loi_tendangnhap").html("");
+                }
+
+            });
+
+            $("#ip_hovaten").blur(function(e) {
+                e.preventDefault();
+                let hovaten = $("#ip_hovaten").val();
+                // Họ tên: Phải có ít nhất Họ, Tên. Ký tự đầu bắt buộc phải viết hoa
+                //Le [Hoang Van Ngoc] Minh
+                // Y Lan
+                let reghoten = /^([A-Z][a-z]*\s)+([A-Z][a-z]*)$/;
+
+                if (hovaten == "") {
+                    $("#loi_hovaten").html("Họ và tên không được để trống");
+                    $("#ip_hovaten").focus();
+                } else if (!reghoten.test(hovaten)) {
+                    $("#loi_hovaten").html("Ho ten phai co it nhat 2 tu");
+                    $("#ip_hovaten").focus();
+                } else
+                    $("#loi_hovaten").html("");
+
+
+            });
+
+            $("#ip_mk").blur(function(e) {
+                e.preventDefault();
+                let mk = $("#ip_mk").val();
+                let regmk = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[!@#$%^&*()]).{8,}$/;
+                if (mk == "") {
+                    $("#loi_mk").html("Mật khẩu không được để trống");
+                    // $("#ip_mk").focus();
+                } else if (!regmk.test(mk)) {
+                    $("#loi_mk").html("Mật khẩu từ 8 ký tự trở lên, có ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt");
+                } else
+                    $("#loi_mk").html("");
+
+            });
+
+            $("#sdt").blur(function(e) {
+                e.preventDefault();
+                let dienthoai = $("#sdt").val();
+                let reg_dienthoai = /^(09)|(08)|(07)|(06)|(05)|(04)|(03)|(02)[0-9]{8}$/;
+                //Điện thoại: là số điện thoại 10 ký tự số, bắt đầu là 09, 03, 07, 06, 05, 04,02 {8}
+
+
+                if (dienthoai != "") {
+                    if (!reg_dienthoai.test(dienthoai)) {
+                        $("#loi_sdt").html("Điện thoại phải là số");
+                        //$("#sdt").focus();
+                    } else {
+                        $("#loi_sdt").html("");
+                    }
+                } else {
+                    $("#loi_sdt").html("");
+                }
+            });
+
+            $("#ip_email").blur(function(e) {
+                e.preventDefault();
+                let email = $("#ip_email").val();
+
+
+                let reg_email = /^[a-zA-Z0-9]+\@[a-zA-Z0-9]+\.(com)$/;
+                //abs@gmail.com
+                //asdasf@gmail34.com
+
+                if (email != "") {
+                    if (!reg_email.test(email)) {
+                        $("#loi_email").html("Email không đúng định dạng");
+                        $("#ip_email").focus();
+                    } else {
+                        $("#loi_email").html("");
+                    }
+                } else {
+                    $("#loi_email").html("");
+                }
+
+            });
+
+            $("#ip_xacnhan").blur(function(e) {
+                e.preventDefault();
+
+                let xacnhan = $("#ip_xacnhan").val();
+                let mk = $("#ip_mk").val();
+
+                if (xacnhan == "") {
+                    $("#loi_xacnhan").html("Xác nhận mật khẩu không được để trống");
+                    $("#ip_xacnhan").focus();
+                } else if (xacnhan != mk) {
+                    $("#loi_xacnhan").html("Xác nhận mật khẩu không đúng");
+                    $("#ip_xacnhan").focus();
+                } else {
+                    $("#loi_xacnhan").html("");
+                }
+
+
+            });
+
+
+            $("#ns").blur(function(e) {
+                e.preventDefault();
+                let ntns = $("#ns").val(); //string
+                // ngay sinh phai lon hon ngay ht
+                ntns = new Date(ntns); // Date
+                let today = new Date();
+
+
+                let tuoi = today.getFullYear() - ntns.getFullYear();
+                $("#tuoi").val(tuoi);
+
+
+            });
+            let i = 1;
+            $("#dk").click(function(e) {
+                e.preventDefault();
+                let tendangnhap = $("#ip_tendangnhap").val();
+                let ntns = $("#ns").val(); //string
+                let email = $("#ip_email").val();
+                let dienthoai = $("#sdt").val();
+                let hovaten = $("#ip_hovaten").val();
+                let mk = $("#ip_mk").val();
+                //  if (hovaten != "" && tendangnhap != "" && mk != "" && xacnhan == mk && ($("#loi_sdt").html() == "" || dienthoai == "") && ($("#loi_email").html() == "" || email == "")) {
+                // localStorage.setItem("hovaten", hovaten);
+                // localStorage.setItem("tendangnhap", tendangnhap);
+                // localStorage.setItem("mk", mk);
+                // //localStorage.setItem("ngaysinh", $("#ngaysinh").val() + "/" + $("#thangsinh").val() + "/" + $("#namsinh").val());
+                // localStorage.setItem("dienthoai", dienthoai);
+                // localStorage.setItem("diachi", $("#ip_diachi").val());
+                // localStorage.setItem("email", email);
+                // localStorage.setItem("sothich", $("#sothich").val());
+
+                // window.location.href = "thongti.html";
+
+                // }
+
+                let newrow = "<tr>   <td>" + i + "</td> <td>" + hovaten + "</td>  <td>" + ntns + "</td>    <td>" + dienthoai + "</td>   <td>" + email + "</td>  <td>" + $("#ip_diachi").val() + "</td> <td>" + $("#sothich").val() + "</td> </tr>";
+                $("#tbl").append(newrow);
+
+                i++;
+            });
+
+        });
+    </script>
+</body>
+
+</html>

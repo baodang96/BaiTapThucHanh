@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        [class*=col-]{
+            margin: 0px auto;
+            padding: 0px;
+        }
+        .row {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form name="formDK" onsubmit="event.preventDefault()">
+            <div class="row">
+                <div class="col-md-2 sm-1">
+                    <label for="txtName">Họ tên:</label>
+                </div>
+                <div class="col-md-5 sm-1">
+                    <input type="text" name="txtName" id="txtName" onblur="checkName()">
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 sm-1">
+                    <label for="cbLop">Lớp:</label>
+                </div>
+                <div class="col-md-5 sm-1">
+                    <select name="cbLop" id="cbLop">
+                        <option value="Đại học Kỹ thuật phần mềm 9A">Đại học Kỹ thuật phần mềm 9A</option>
+                        <option value="Đại học Kỹ thuật phần mềm 9B">Đại học Kỹ thuật phần mềm 9B</option>
+                        <option value="Đại học Kỹ thuật phần mềm 9C">Đại học Kỹ thuật phần mềm 9C</option>
+                        <option value="Đại học Kỹ thuật phần mềm 9D">Đại học Kỹ thuật phần mềm 9D</option>
+                    </select>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 sm-1">
+                    <label for="cbMon">Môn học:</label>
+                </div>
+                <div class="col-md-5 sm-1">
+                    <select name="cbMon" id="cbMon">
+                        <option value="Lập trình hướng đối tượng">Lập trình hướng đối tượng</option>
+                        <option value="Lập trình hướng sự kiện">Lập trình hướng sự kiện</option>
+                        <option value="Hệ thống & công nghệ Web">Hệ thống & công nghệ Web</option>
+                        <option value="An toàn thông tin">An toàn thông tin</option>
+                    </select>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 sm-1">
+                    <label>Loại:</label>
+                </div>
+                <div class="col-md-5 sm-1">
+                    <input type="radio" id="radLT" name="rad" checked="true" value="Lý thuyết">
+                    <label for="radlt">Lý thuyết</label>
+                    <input type="radio" id="radTH" name="rad" value="Thực hành">
+                    <label for="radTH">Thực hành</label>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 sm-1">
+                    <button id="btnDK" onclick="addToTable()">Đăng ký</button>
+                </div>
+                <div class="col-md-9"></div>
+            </div>
+            <div class="row">
+                <table class="table table-bordered" id="tableDK">
+                    <thead>
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Lớp</th>
+                            <th>Môn học đăng ký</th>
+                            <th>Loại</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <span id="test"></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            focusTextFiled();
+        })
+        function focusTextFiled(){
+            document.getElementById('txtName').focus();
+        }
+        function checkName(){
+            var rexName = /^([A-Z]){1}[a-z]*(\s[A-Z]{1}[a-z]*)*$/;
+            if(rexName.test(document.getElementById('txtName').value.trim())==false){
+                alert("Tên không hợp lệ");
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function addToTable(){
+            var ht = document.getElementById('txtName').value;
+            var mon = document.getElementById('cbMon').value;
+            var lop = document.getElementById('cbLop').value;
+            var radioLoai = document.getElementsByName('rad');
+            var loai = '';
+            for(var i = 0; i<radioLoai.length; i++){
+                if(radioLoai[i].checked){
+                    loai = radioLoai[i].value;
+                    break;
+                }
+            }
+
+            var table = document.getElementById('tableDK').getElementsByTagName('tbody')[0];
+
+            var newRow = table.insertRow();
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            cell1.innerHTML = ht;
+            cell2.innerHTML = lop;
+            cell3.innerHTML = mon;
+            cell4.innerHTML = loai;
+        }
+        // document.addEventListener("txtName", function(){
+        //     var txt = document.getElementById('txtName').value.trim();
+        //     var btn = document.getElementById('btnDK');
+        //     var rexName = /^[A-Z][a-z]*(\s[A-Z][a-z]*)*/;
+        //     if(rexName.test(txt)==false){
+        //         document.getElementById('btnDK').disable;
+        //     } else {
+        //         document.getElementById('btnDK').disable = false;
+        //     }
+        // })
+    </script>
+</body>
+</html>

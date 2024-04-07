@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="" content="">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 2</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/bt2.css">
+
+
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <div class="row">
+        <div class="col-4">
+            <table class="table table-bordered ">
+                <tr class=" text-center title">
+                    <td colspan="2">Bảng tin thị trường</td>
+                </tr>
+                <tr class="table-active text-primary text-center">
+                    <td colspan="2">Vàng</td>
+                </tr>
+                <tr class="text-primary text-center">
+                    <td>Mua vào</td>
+                    <td>Bán ra</td>
+                </tr>
+                <tr class="text-center">
+                    <td id="vangmua"></td>
+                    <td id="vangban"></td>
+                </tr>
+                <tr class="text-primary text-center">
+                    <td colspan="2">USD</td>
+                </tr>
+                <tr class="text-primary text-center">
+                    <td>Mua vào</td>
+                    <td>Bán ra</td>
+                </tr>
+                <tr class="text-center">
+                    <td id="usdmua"></td>
+                    <td id="usdban"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table table-bordered table-secondary">
+                <tr class=" text-center title">
+                    <td colspan="2">Cập nhật giá cả thị trường</td>
+                </tr>
+                <tr>
+                    <td>Mua vào</td>
+                    <td><input type="text" id="muavao"><span class="ermua">(*)</span></td>
+                </tr>
+                <tr>
+                    <td>Bán ra</td>
+                    <td><input type="text" id="banra"><span class="erban">(*)</span></td>
+                </tr>
+                <tr>
+                    <td>Loại xe</td>
+                    <td>
+                        <select name="loaixe" id="loaixe">
+                            <option value="../img/car1.jpg;35000">Toyota</option>
+                            <option value="../img/car2.jpg;15000">KIA</option>
+                            <option value="../img/car3.jpg;40000">Ford</option>
+                            <option value="../img/car4.jpg;32000">Civic</option>
+                            <option value="../img/car5.jpg;50000">Ferrari</option>
+                            <option value="../img/car6.jpg;45000">Mercedes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="radio" name="tiente" value="1">
+                        <label for="tiente">Vàng</label>
+                        <input type="radio" name="tiente" value="0">
+                        <label for="tiente">USD</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button id="update">Update</button>
+                        <button id="state" disabled>State</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table table-bordered ">
+                <tr class="table-active text-center title">
+                    <td>Bảng báo giá</td>
+                </tr>
+                <tr class="text-primary">
+                    <td>
+                        <div id="infor">
+                            <p>-với kiểu dáng thể thao, sang trọng</p>
+                            <p>-nổi bật, ít tốn nhiên liệu</p>
+                            <p>-kiểu dáng thể thao</p>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="table-active text-center">
+                    <td>
+                        <img src="../img/car1.jpg" id="hinhxe">
+                    </td>
+                </tr>
+                <tr class="text-success">
+                    <td>
+                        Giá: <span id="gia">35000</span> USD
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            function ktra(giatri, loi) {
+                let reg = /^[0-9]+$/;
+
+                if (!reg.test(giatri)) {
+                    $(loi).html("Gia tri la so!!!");
+                    return false;
+                } else {
+                    $(loi).html("(*)");
+                    return true;
+                }
+            }
+
+            $("#muavao").blur(function () {
+                let valmua = $("#muavao").val();
+                ktra(valmua, ".ermua");
+            });
+            $("#banra").blur(function () {
+                let valban = $("#banra").val();
+                if (!ktra(valban, ".erban")) {
+                    $(".erban").html("Gia tri la so!!!");
+                    $("#state").prop("disabled", true);
+                } else {
+                    $(".erban").html("(*)");
+                    $("#state").prop("disabled", false);
+                }
+            });
+            $("#loaixe").change(function () {
+                let xe = $("#loaixe").val();
+                let vtri = xe.indexOf(";");
+                let path = xe.substr(0, vtri);
+                let pricar = xe.substr(vtri + 1);
+                $("#hinhxe").attr("src", path);
+                $("#gia").html(pricar);
+            });
+
+            $("#update").click(function () {
+                let muavao = $("#muavao").val();
+                let banra = $("#banra").val();
+
+                if ($(".ermua").html() == "(*)" && $(".erban").html() == "(*)") {
+                    if (muavao != "" && banra != "") {
+                        let tiente = $("input[name='tiente']:checked").val();
+                        if (tiente == 1) {
+                            $("#vangmua").html(muavao);
+                            $("#vangban").html(banra);
+                        } else {
+                            $("#usdmua").html(muavao);
+                            $("#usdban").html(banra);
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+
+
+
+
+</html>

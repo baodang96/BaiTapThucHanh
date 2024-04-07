@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <style>
+        [class*=col-]{
+            margin: 0px;
+            padding: 0px;
+        }
+        .note {
+            color: red;
+        }
+        form {
+            border: 1px solid black;
+        }
+        /* #btn {
+            color: white;
+            background-color: black;
+            border-radius: 10%;
+        } */
+    </style>
+</head>
+<body>
+   <div class="container" style="width: 720px;">    
+    <form name="formDK" onsubmit="return checkSubmit()"; method="post">
+        <div class="row my-3 text-center">
+            <div class="col">
+                <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtDN">Tên đăng nhập:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtDN" id="txtDN" placeholder="txtDN" onblur="return checkDN()">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note" id="noteDN">*</span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtMK">Mật khẩu:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtMK" id="txtMK" placeholder="txtMK" onblur="return checkMK()">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note" id="noteMK">*</span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtXNMK">Nhập lại mật khẩu:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtXNMK" id="txtXNMK" placeholder="txtXNMK" onblur="return checkXNMK()">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note" id="noteXNMK">*</span>
+            </div>
+        </div>
+        <div class="row my-3 text-center">
+            <div class="col">
+                <h3>Thôn tin cá nhân</h3>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtName">Họ và tên:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtName" id="txtName" placeholder="txtName" onblur="return checkName()">
+            </div>
+            <div class="col-md-4 sm-1">
+                <span class="note" id="noteName">* bắt buộc</span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="date">Ngày sinh:</label>
+            </div>
+            <div class="col-md-4 sm-1">
+                <input type="date" name="date" id="date" class="mx-4" onblur="return checkNS()">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note" id="noteDate"></span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label>Giới tính:</label>
+            </div>
+            <div class="col-md-4 sm-1">
+                <input type="radio" name="sex" id="nam" class="mx-2" checked="true">
+                <label for="nam">Nam</label>
+                <input type="radio" name="sex" id="nu" class="mx-2">
+                <label for="nu">Nữ</label>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtDC">Địa chỉ:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtDC" id="txtDC" placeholder="txtDC">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note"></span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtDT">Điện thoại:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtDT" id="txtDT" placeholder="txtDT" onblur="return checkDT()">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note" id="noteDT">phải là số</span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 sm-1 text-end">
+                <label for="txtE">Email:</label>
+            </div>
+            <div class="col-md-4 sm-1 text-center">
+                <input type="text" name="txtE" id="txtE" placeholder="txtEmail"onblur="return checkEmail()">
+            </div>
+            <div class="col-md-4 sm-1 text-start">
+                <span class="note" id="noteE">nhập đúng địa chỉ email</span>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col text-center">
+                <input type="submit" class="bnt btn-dark" value="Đăng ký">
+                <input type="reset" class="bnt btn-dark" value="Huỷ">
+            </div>
+        </div>
+    </form>
+   </div>
+   <script>
+        var rexNUll = /\w+/;
+        function checkDN() {
+            if(rexNUll.test(document.getElementById('txtDN').value.trim()) == false){
+                noteDN.innerText = "Không được để rỗng";
+                return false;
+            } else {
+                noteDN.innerText = "";
+                return true;
+            }
+        }
+
+        function checkMK() {
+            if(rexNUll.test(document.getElementById('txtMK').value.trim()) == false){
+                noteMK.innerText = "Không được để rỗng";
+                return false;
+            } else {
+                noteMK.innerText = "";
+                return true;
+            }
+        }
+
+        function checkXNMK() {
+            var mkxn = document.getElementById('txtXNMK').value.trim();
+            if(mkxn != document.getElementById('txtMK').value.trim()){
+                noteXNMK.innerText = "Mật khẩu xác nhận không đúng";
+                return false;
+            } else {
+                noteXNMK.innerText = "";
+                return true;
+            }
+        }
+
+        function checkName() {
+            var rexName = /^[A-Z][a-z]*(\s[A-Z][a-z]*)*$/;
+            if(rexName.test(document.getElementById("txtName").value.trim()) == false){
+                noteName.innerText = "Sai định dạng tên";
+                return false;
+            } else {
+                noteName.innerText = "";
+                return true;
+            }
+        }
+
+        function checkNS() {
+            var date = document.getElementById('date').value;
+            var namsinh = parseInt((new Date(date)).getFullYear());
+            if(namsinh >= 2002) {
+                noteDate.innerText = "Năm sinh phải > 2002";
+                return false;
+            } else {
+                noteDate.innerText = "";
+                return true;
+            }
+        }
+
+        function checkDT() {
+            if(rexNUll.test(document.getElementById('txtDT').value.trim())==false){
+                noteDT.innerText = "Không được để rỗng";
+                return false;
+            }
+            var rexDT = /[0-9]{10}/;
+            if(rexDT.test(document.getElementById("txtDT").value.trim()) == false){
+                noteDT.innerText = "phải là số và trên 10 kí tự";
+                return false;
+            } else {
+                noteDT.innerText = "";
+                return true;
+            }
+        }
+
+        function checkEmail() {
+            var rexEmail = /\w+@(gmail|google|yahoo)\.(com)(\.vn)?/;
+            if(rexNUll.test(document.getElementById('txtE').value.trim())==false){
+                noteE.innerText = "Không được để rỗng";
+                return false;
+            }
+            if(rexEmail.test(document.getElementById("txtE").value.trim()) == false){
+                noteE.innerText = "phải đúng định dạng email";
+                return false;
+            } else {
+                noteE.innerText = "";
+                return true;
+            }
+        }
+
+        function checkSubmit() {
+            if(checkDN() == false || checkMK() == false || checkXNMK() == false || checkName() == false || checkNS() == false || checkDT() == false || checkEmail() == false){
+                alert("Đăng ký không thành công!");
+                return false;
+            } else {
+                alert("Đăng ký thành công!");
+                return true;
+            }
+        }
+        
+        // function rsForm(){
+        //     var DN = document.getElementById("txtDN").value.trim();
+        //     var MK = document.getElementById("txtMK").value.trim();
+        //     var XNMK = document.getElementById("txtXNMK").value.trim();
+        //     var Name = document.getElementById("txtName").value.trim();
+        //     var DC = document.getElementById("txtDC").value.trim();
+        //     var DT = document.getElementById("txtDT").value.trim();
+        //     var E = document.getElementById("txtE").value.trim();
+        //     DN.value = "";
+        //     MK.value = "";
+        //     XNMK.value = "";
+        //     Name.value = "";
+        //     DC.value = "";
+        //     DT.value = "";
+        //     E.value = "";
+        // }
+   </script>
+</body>
+</html>
